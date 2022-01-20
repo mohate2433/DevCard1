@@ -25,6 +25,19 @@ namespace DevCard_Mvc.Controllers
 
         public IActionResult Contact()
         {
+            var model = new Contact();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Contact(Contact moedl)
+        {
+            if(!ModelState.IsValid)
+            {
+                ViewBag.error = "اطلاعات وارد شده صحیح نمیباشد لطفا مجددا تلاش کنید";
+                return View("model");
+            }
+
+            ViewBag.success = "پیعام شما با موفقیت ثبت شد";
             return View();
         }
 
